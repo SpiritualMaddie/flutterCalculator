@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_calc/widgets/calculator.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const CalculatorApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class CalculatorApp extends StatelessWidget {
+  const CalculatorApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -14,15 +14,24 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Kalkylator',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.brown),
+        colorScheme:
+            ColorScheme.fromSeed(
+              seedColor: const Color.fromARGB(255, 131, 163, 92),
+            ).copyWith(
+              primary: const Color.fromARGB(255, 98, 122, 68),
+              secondary: const Color.fromARGB(255, 203, 233, 168),
+              surface: const Color.fromARGB(255, 92, 100, 82),
+              onSecondary: const Color.fromARGB(255, 0, 0, 0),
+              onPrimary: const Color.fromARGB(255, 255, 255, 255),
+            ),
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: Text("Kalkylator"),
-          backgroundColor: Colors.brown,
-          ),
+        // appBar: AppBar(
+        //   title: Text("Kalkylator"),
+        //   backgroundColor: Color.fromARGB(255, 131, 163, 92),
+        // ),
         body: Calculator(),
-        ),
+      ),
     );
   }
 }
