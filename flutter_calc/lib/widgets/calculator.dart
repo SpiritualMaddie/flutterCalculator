@@ -31,7 +31,7 @@ class _CalculatorState extends State<Calculator> {
     "2",
     "3",
     "-",
-    " ",
+    "",
     "0",
     ".",
     "=",
@@ -40,46 +40,29 @@ class _CalculatorState extends State<Calculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       body: Column(
         children: [
           Expanded(
             child: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                color: Colors.amberAccent[50],
-              ),
+              padding: EdgeInsets.all(3),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(92, 121, 85, 72),
-                      borderRadius: BorderRadius.horizontal(
-                        left: Radius.elliptical(12, 12),
-                        right: Radius.elliptical(12, 12),
-                      ),
-                    ),
                     padding: EdgeInsets.all(20),
                     alignment: Alignment.centerLeft,
                     child: Text(
                       userInput,
-                      style: TextStyle(color: Colors.black, fontSize: 20),
+                      style: TextStyle(color: Colors.black, fontSize: 30),
                     ),
                   ),
                   Container(
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(92, 121, 85, 72),
-                      borderRadius: BorderRadius.horizontal(
-                        left: Radius.elliptical(12, 12),
-                        right: Radius.elliptical(12, 12),
-                      ),
-                    ),
                     padding: EdgeInsets.all(20),
                     alignment: Alignment.centerRight,
                     child: Text(
                       userAnswer,
-                      style: TextStyle(color: Colors.black, fontSize: 30),
+                      style: TextStyle(color: Colors.black, fontSize: 60),
                     ),
                   ),
                 ],
@@ -89,7 +72,8 @@ class _CalculatorState extends State<Calculator> {
           Expanded(
             flex: 2,
             child: Container(
-              color: Colors.amberAccent,
+              padding: EdgeInsets.all(2),
+              color: Theme.of(context).colorScheme.surface,
               child: GridView.builder(
                 itemCount: buttons.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -109,9 +93,9 @@ class _CalculatorState extends State<Calculator> {
                           }
                         });
                       },
-                      color: Colors.green,
+                      color: Theme.of(context).colorScheme.primary,
                       buttonText: buttons[index],
-                      textColor: Colors.white,
+                      textColor: Theme.of(context).colorScheme.surfaceBright,
                     );
                   }
                   // Delete button
@@ -129,9 +113,9 @@ class _CalculatorState extends State<Calculator> {
                           }
                         });
                       },
-                      color: Colors.green,
+                      color: Theme.of(context).colorScheme.primary,
                       buttonText: buttons[index],
-                      textColor: Colors.white,
+                      textColor: Theme.of(context).colorScheme.surfaceBright,
                     );
                   }
                   // Equal button
@@ -142,9 +126,9 @@ class _CalculatorState extends State<Calculator> {
                           userAnswer = calculate(userInput);
                         });
                       },
-                      color: Colors.green,
+                      color: Theme.of(context).colorScheme.primary,
                       buttonText: buttons[index],
-                      textColor: Colors.white,
+                      textColor: Theme.of(context).colorScheme.surfaceBright,
                     );
                   } else {
                     return Button(
@@ -154,11 +138,11 @@ class _CalculatorState extends State<Calculator> {
                         });
                       },
                       color: isOperator(buttons[index])
-                          ? Colors.green
-                          : Colors.lime,
+                          ? Theme.of(context).colorScheme.primary
+                          : Theme.of(context).colorScheme.secondary,
                       textColor: isOperator(buttons[index])
-                          ? Colors.white
-                          : Colors.green[900],
+                          ? Theme.of(context).colorScheme.surfaceBright
+                          : Theme.of(context).colorScheme.onSecondary,
                       buttonText: buttons[index],
                     );
                   }
