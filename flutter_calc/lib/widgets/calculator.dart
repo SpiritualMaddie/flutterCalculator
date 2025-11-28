@@ -1,18 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_calc/utils/booleans.dart';
+import 'package:flutter_calc/utils/calculate_methods.dart';
 import 'package:flutter_calc/widgets/buttons.dart';
-
-// class Calculator extends StatelessWidget {
-//   const Calculator({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea(
-//       child: );
-//   }
-// }
 
 class Calculator extends StatefulWidget {
   const Calculator({super.key});
@@ -22,29 +11,29 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-  var userInput = "question";
-  var userAnswer = "answer";
+  var userInput = "";
+  var userAnswer = "";
 
   final List<String> buttons = [
-    "%",
     "C",
     "CE",
     "DEL",
+    "/",
     "7",
     "8",
     "9",
-    "/",
+    "*",
     "4",
     "5",
     "6",
-    "*",
+    "+",
     "1",
     "2",
     "3",
     "-",
-    ".",
+    " ",
     "0",
-    ",",
+    ".",
     "=",
   ];
 
@@ -74,7 +63,7 @@ class _CalculatorState extends State<Calculator> {
                     padding: EdgeInsets.all(20),
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "$userInput =",
+                      userInput,
                       style: TextStyle(color: Colors.black, fontSize: 20),
                     ),
                   ),
@@ -107,15 +96,72 @@ class _CalculatorState extends State<Calculator> {
                   crossAxisCount: 4,
                 ),
                 itemBuilder: (BuildContext context, int index) {
-                  return Button(
-                    color: isOperator(buttons[index])
-                        ? Colors.green
-                        : Colors.lime,
-                    textColor: isOperator(buttons[index])
-                        ? Colors.white
-                        : Colors.green[900],
-                    buttonText: buttons[index],
-                  );
+                  // Clear button
+                  if (index == 0 || index == 1) {
+                    return Button(
+                      buttonTapped: () {
+                        setState(() {
+                          if (index == 0) {
+                            userInput = "";
+                          } else {
+                            userInput = "";
+                            userAnswer = "";
+                          }
+                        });
+                      },
+                      color: Colors.green,
+                      buttonText: buttons[index],
+                      textColor: Colors.white,
+                    );
+                  }
+                  // Delete button
+                  else if (index == 2) {
+                    return Button(
+                      buttonTapped: () {
+                        setState(() {
+                          if (userInput.isNotEmpty) {
+                            userInput = userInput.substring(
+                              0,
+                              userInput.length - 1,
+                            );
+                          } else {
+                            userInput = "";
+                          }
+                        });
+                      },
+                      color: Colors.green,
+                      buttonText: buttons[index],
+                      textColor: Colors.white,
+                    );
+                  }
+                  // Equal button
+                  else if (index == buttons.length - 1) {
+                    return Button(
+                      buttonTapped: () {
+                        setState(() {
+                          userAnswer = calculate(userInput);
+                        });
+                      },
+                      color: Colors.green,
+                      buttonText: buttons[index],
+                      textColor: Colors.white,
+                    );
+                  } else {
+                    return Button(
+                      buttonTapped: () {
+                        setState(() {
+                          userInput += buttons[index];
+                        });
+                      },
+                      color: isOperator(buttons[index])
+                          ? Colors.green
+                          : Colors.lime,
+                      textColor: isOperator(buttons[index])
+                          ? Colors.white
+                          : Colors.green[900],
+                      buttonText: buttons[index],
+                    );
+                  }
                 },
               ),
             ),
