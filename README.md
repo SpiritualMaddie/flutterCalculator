@@ -9,12 +9,12 @@ A simple calculator built with Flutter, featuring animated buttons and customiza
 
 ### Demos
 
-<div align="center">
+<div align="start">
   <table>
     <tr>
-      <td><b>Clear and Delete</b></td>
+      <td align="center"><b>Clear and Delete</b></td>
       <td width="50"></td>
-      <td><b>Color Customization</b></td>
+      <td align="center"><b>Color Customization</b></td>
     </tr>
     <tr>
       <td><img src="demos/c_delete.gif" width="195"></td>
@@ -22,9 +22,9 @@ A simple calculator built with Flutter, featuring animated buttons and customiza
       <td><img src="demos/color_change.gif" width="200"></td>
     </tr>
     <tr>
-      <td><b>Error Handling</b></td>
+      <td align="center"><b>Error Handling</b></td>
       <td width="50"></td>
-      <td><b>Horizontal Scrolling</b></td>
+      <td align="center"><b>Horizontal Scrolling</b></td>
     </tr>
     <tr>
       <td><img src="demos/error_handling.gif" width="200"></td>
