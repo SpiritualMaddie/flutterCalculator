@@ -1,10 +1,13 @@
 import 'package:math_expressions/math_expressions.dart';
 
 String calculate(String userInput) {
+
+  // Checks for several wrong inputs - more info in function
   if (!_isInputValid(userInput)) {
     return "Error!";
   }
 
+  // Checks for division with zero
   if (RegExp(r'/0(?!\d)').hasMatch(userInput)) {
     return "Den gick inte";
   }
@@ -28,9 +31,6 @@ String calculate(String userInput) {
       return eval.toInt().toString();
     }
 
-    if (eval.isInfinite) {
-      return "Du kan inte dela med noll";
-    }
     return eval.toString();
   } catch (e) {
     String errorMessage = "Error!";
@@ -38,6 +38,7 @@ String calculate(String userInput) {
   }
 }
 
+// Checks for several wrong inputs
 bool _isInputValid(String input) {
   final operators = ["+", "-", "*", "/"];
   if (input.isEmpty) return false;

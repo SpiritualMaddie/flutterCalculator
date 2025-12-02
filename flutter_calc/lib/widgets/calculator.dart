@@ -12,7 +12,7 @@ class Calculator extends StatefulWidget {
 class _CalculatorState extends State<Calculator> {
   var userInput = "";
   var userAnswer = "";
-  Color accentColor = getRandomNeonColor();
+  Color accentColor = Colors.white;
 
   final List<String> buttons = [
     "C",
@@ -37,18 +37,13 @@ class _CalculatorState extends State<Calculator> {
     "=",
   ];
 
-  void changeAccentColor(){
-    setState(() {
-      accentColor = getRandomNeonColor();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.secondary,
       body: Column(
         children: [
+          // Top part of the calculator
           Expanded(
             child: Container(
               padding: EdgeInsets.all(3),
@@ -61,8 +56,9 @@ class _CalculatorState extends State<Calculator> {
                     child: Text(
                       userInput,
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.onSecondary, 
-                        fontSize: 30),
+                        color: Theme.of(context).colorScheme.onSecondary,
+                        fontSize: 30,
+                      ),
                     ),
                   ),
                   Container(
@@ -73,9 +69,9 @@ class _CalculatorState extends State<Calculator> {
                       child: Text(
                         userAnswer,
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.onSecondary, 
-                          fontSize: 60
-                          ),
+                          color: Theme.of(context).colorScheme.onSecondary,
+                          fontSize: 60,
+                        ),
                       ),
                     ),
                   ),
@@ -83,6 +79,7 @@ class _CalculatorState extends State<Calculator> {
               ),
             ),
           ),
+          // Bottom part of the calculator
           Expanded(
             flex: 2,
             child: Container(
@@ -94,11 +91,12 @@ class _CalculatorState extends State<Calculator> {
                   crossAxisCount: 4,
                 ),
                 itemBuilder: (BuildContext context, int index) {
-                  // Clear button
+                  // Clear button (C) and clear all (CE) button
                   if (index == 0 || index == 1) {
                     return Button(
                       buttonTapped: () {
                         setState(() {
+                          // If C clear equation else (CE) clear both equation and answer
                           if (index == 0) {
                             userInput = "";
                           } else {
@@ -145,17 +143,25 @@ class _CalculatorState extends State<Calculator> {
                       textColor: accentColor,
                     );
                   }
-                  // Color button
+                  // Color button - changes to neon colors on tap and white on long press
                   else if (index == 16) {
                     return Button(
                       buttonTapped: () {
-                        changeAccentColor();
+                        setState(() {
+                          accentColor = getRandomNeonColor(accentColor);
+                        });
+                      },
+                      buttonLongPressed: () {
+                        setState(() {
+                          accentColor = Colors.white;
+                        });
                       },
                       color: Theme.of(context).colorScheme.secondary,
                       buttonText: buttons[index],
                       textColor: accentColor,
                     );
-                  }
+                  } 
+                  // Rest of the buttons
                   else {
                     return Button(
                       buttonTapped: () {
@@ -163,6 +169,7 @@ class _CalculatorState extends State<Calculator> {
                           userInput += buttons[index];
                         });
                       },
+                      // Colors changing depending on type of button (operators or not)
                       color: isOperator(buttons[index])
                           ? Theme.of(context).colorScheme.primary
                           : Theme.of(context).colorScheme.secondary,
