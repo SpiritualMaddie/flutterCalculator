@@ -9,12 +9,30 @@ A simple calculator built with Flutter, featuring animated buttons and customiza
 
 ### Demos
 
-| Clear and Delete | Color Customization |
-|:---:|:---:|
-| <img src="demos/c_delete.gif" width="195" style="padding: 10px;"> | <img src="demos/color_change.gif" width="200" style="padding: 10px;"> |
-| Error Handling | Horizontal Scrolling |
-|:---:|:---:|
-| <img src="demos/error_handling.gif" width="200" style="padding: 10px;"> | <img src="demos/scroll.gif" width="200" style="padding: 10px;"> |
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>Clear and Delete</b></td>
+      <td width="50"></td>
+      <td align="center"><b>Color Customization</b></td>
+    </tr>
+    <tr>
+      <td><img src="demos/c_delete.gif" width="195"></td>
+      <td width="50"></td>
+      <td><img src="demos/color_change.gif" width="200"></td>
+    </tr>
+    <tr>
+      <td align="center"><b>Error Handling</b></td>
+      <td width="50"></td>
+      <td align="center"><b>Horizontal Scrolling</b></td>
+    </tr>
+    <tr>
+      <td><img src="demos/error_handling.gif" width="200"></td>
+      <td width="50"></td>
+      <td><img src="demos/scroll.gif" width="200"></td>
+    </tr>
+  </table>
+</div>
 
 
 
