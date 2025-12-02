@@ -11,7 +11,7 @@ A simple calculator built with Flutter, featuring animated buttons and customiza
 
 <div align="start">
   <table>
-    <tr padding = 3>
+    <tr>
       <td align="center"><b>Clear and Delete</b></td>
       <td width="50"></td>
       <td align="center"><b>Color Customization</b></td>
