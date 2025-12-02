@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_calc/utils/booleans.dart';
-import 'package:flutter_calc/utils/calculate_methods.dart';
-import 'package:flutter_calc/widgets/buttons.dart';
+import 'package:flutter_calc/utils/utils.dart';
+import 'package:flutter_calc/widgets/widgets.dart';
 
 class Calculator extends StatefulWidget {
   const Calculator({super.key});
@@ -13,6 +12,7 @@ class Calculator extends StatefulWidget {
 class _CalculatorState extends State<Calculator> {
   var userInput = "";
   var userAnswer = "";
+  Color accentColor = getRandomNeonColor();
 
   final List<String> buttons = [
     "C",
@@ -31,11 +31,17 @@ class _CalculatorState extends State<Calculator> {
     "2",
     "3",
     "-",
-    "",
+    "🎨",
     "0",
     ".",
     "=",
   ];
+
+  void changeAccentColor(){
+    setState(() {
+      accentColor = getRandomNeonColor();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,15 +60,23 @@ class _CalculatorState extends State<Calculator> {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       userInput,
-                      style: TextStyle(color: Colors.black, fontSize: 30),
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSecondary, 
+                        fontSize: 30),
                     ),
                   ),
                   Container(
                     padding: EdgeInsets.all(20),
                     alignment: Alignment.centerRight,
-                    child: Text(
-                      userAnswer,
-                      style: TextStyle(color: Colors.black, fontSize: 60),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Text(
+                        userAnswer,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onSecondary, 
+                          fontSize: 60
+                          ),
+                      ),
                     ),
                   ),
                 ],
@@ -95,7 +109,7 @@ class _CalculatorState extends State<Calculator> {
                       },
                       color: Theme.of(context).colorScheme.primary,
                       buttonText: buttons[index],
-                      textColor: Theme.of(context).colorScheme.surfaceBright,
+                      textColor: accentColor,
                     );
                   }
                   // Delete button
@@ -115,7 +129,7 @@ class _CalculatorState extends State<Calculator> {
                       },
                       color: Theme.of(context).colorScheme.primary,
                       buttonText: buttons[index],
-                      textColor: Theme.of(context).colorScheme.surfaceBright,
+                      textColor: accentColor,
                     );
                   }
                   // Equal button
@@ -128,9 +142,21 @@ class _CalculatorState extends State<Calculator> {
                       },
                       color: Theme.of(context).colorScheme.primary,
                       buttonText: buttons[index],
-                      textColor: Theme.of(context).colorScheme.surfaceBright,
+                      textColor: accentColor,
                     );
-                  } else {
+                  }
+                  // Color button
+                  else if (index == 16) {
+                    return Button(
+                      buttonTapped: () {
+                        changeAccentColor();
+                      },
+                      color: Theme.of(context).colorScheme.secondary,
+                      buttonText: buttons[index],
+                      textColor: accentColor,
+                    );
+                  }
+                  else {
                     return Button(
                       buttonTapped: () {
                         setState(() {
@@ -141,7 +167,7 @@ class _CalculatorState extends State<Calculator> {
                           ? Theme.of(context).colorScheme.primary
                           : Theme.of(context).colorScheme.secondary,
                       textColor: isOperator(buttons[index])
-                          ? Theme.of(context).colorScheme.surfaceBright
+                          ? accentColor
                           : Theme.of(context).colorScheme.onSecondary,
                       buttonText: buttons[index],
                     );

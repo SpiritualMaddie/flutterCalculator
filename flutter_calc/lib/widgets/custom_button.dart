@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// TODO change animation
 class Button extends StatefulWidget {
   final Color color;
   final Color textColor;
@@ -69,7 +68,11 @@ class _ButtonState extends State<Button> {
                 alignment: Alignment.center,
                 child: Text(
                   widget.buttonText,
-                  style: TextStyle(color: widget.textColor, fontSize: 25),
+                  style: TextStyle(
+                    color: widget.textColor,
+                    fontSize: 32,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ),

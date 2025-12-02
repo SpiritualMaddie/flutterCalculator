@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_calc/widgets/calculator.dart';
+import 'package:flutter_calc/widgets/widgets.dart';
 
 void main() {
   runApp(const CalculatorApp());
@@ -8,75 +8,29 @@ void main() {
 class CalculatorApp extends StatelessWidget {
   const CalculatorApp({super.key});
 
-  // This widget is the root of your application.
+  // This widget is the root
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Kalkylator',
       theme: ThemeData(
         colorScheme:
             ColorScheme.fromSeed(
-              seedColor: const Color.fromARGB(255, 131, 163, 92),
+              seedColor: const Color.fromARGB(255, 54, 54, 53),
             ).copyWith(
-              primary: const Color.fromARGB(255, 98, 122, 68),
-              secondary: const Color.fromARGB(255, 203, 233, 168),
-              surface: const Color.fromARGB(255, 92, 100, 82),
+              primary: const Color.fromARGB(255, 54, 54, 53),
+              secondary: const Color.fromARGB(235, 163, 163, 162),
+              surface: const Color.fromARGB(200, 85, 84, 83),
               onSecondary: const Color.fromARGB(255, 0, 0, 0),
-              onPrimary: const Color.fromARGB(255, 255, 255, 255),
+              onPrimary: const Color.fromARGB(220, 203, 245, 53),
             ),
       ),
       home: Scaffold(
-        // appBar: AppBar(
-        //   title: Text("Kalkylator"),
-        //   backgroundColor: Color.fromARGB(255, 131, 163, 92),
-        // ),
-        body: Calculator(),
-      ),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        appBar: AppBar(
+          toolbarHeight: 2,
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        body: Calculator(),
       ),
     );
   }
