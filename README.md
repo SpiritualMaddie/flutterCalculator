@@ -11,7 +11,7 @@ A simple calculator built with Flutter, featuring animated buttons and customiza
 
 | Color Customization | Clear and Delete |
 |:---:|:---:|
-| <img src="demos/color_change.gif" width="300"> | <img src="demos/c_delete.gif" width="300"> |
+| <img src="demos/c_delete.gif" width="300"> | <img src="demos/color_change.gif" width="300"> |
 
 | Error Handling | Horizontal Scrolling |
 |:---:|:---:|
