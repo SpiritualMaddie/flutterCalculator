@@ -1,7 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-Color getRandomNeonColor() {
+// Gives a random color from the list of colors without giving same colors back to back
+Color getRandomNeonColor(Color currentColor) {
   const neonColors = [
     Color(0xFFFF00FF), // neon magenta
     Color(0xFF00FFFF), // neon cyan
@@ -12,6 +13,15 @@ Color getRandomNeonColor() {
   ];
 
   final random = Random();
-  return neonColors[random.nextInt(neonColors.length)];
+  Color newColor;
+
+  // Keep rolling until it's not the same color as the current color
+  // to always return a new color from the list
+  do {
+    newColor = neonColors[random.nextInt(neonColors.length)];
+  } while (newColor == currentColor);
+
+  currentColor = newColor;
+  return newColor;
 }
 
