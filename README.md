@@ -8,16 +8,16 @@ A simple calculator built with Flutter, featuring animated buttons and customiza
 ## Demo
 
 ### Color Customization
-![Color changing demo](demos/color_change.gif){ .image25percent }
+![Color changing demo](./demos/color_change.gif)
 
 ### Clear and Delete Functions
-![Clear and delete demo](demos/c_delete.gif){ .image25percent }
+![Clear and delete demo](./demos/c_delete.gif)
 
 ### Error Handling
-![Error handling demo](demos/error_handling.gif){ .image25percent }
+![Error handling demo](./demos/error_handling.gif)
 
 ### Horizontal Scrolling
-![Horizontal scroll demo](demos/scroll.gif){ .image25percent }
+![Horizontal scroll demo](./demos/scroll.gif)
 
 ## Features
 
