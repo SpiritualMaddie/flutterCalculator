@@ -53,11 +53,15 @@ class _CalculatorState extends State<Calculator> {
                   Container(
                     padding: EdgeInsets.all(20),
                     alignment: Alignment.centerLeft,
-                    child: Text(
-                      userInput,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.onSecondary,
-                        fontSize: 30,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      reverse: true,
+                      child: Text(
+                        userInput,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onSecondary,
+                          fontSize: 30,
+                        ),
                       ),
                     ),
                   ),
