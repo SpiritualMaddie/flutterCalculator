@@ -19,14 +19,15 @@ class CalculatorApp extends StatelessWidget {
             ColorScheme.fromSeed(
               seedColor: const Color.fromARGB(255, 54, 54, 53),
             ).copyWith(
-              primary: const Color.fromARGB(255, 54, 54, 53),
-              secondary: const Color.fromARGB(235, 163, 163, 162),
-              surface: const Color.fromARGB(200, 85, 84, 83),
+              primary: const Color.fromARGB(255, 102,142,67),
+              secondary: const Color.fromARGB(235, 222,164,46),
+              surface: const Color.fromARGB(200, 225,37,121),
               onSecondary: const Color.fromARGB(255, 0, 0, 0),
               onPrimary: const Color.fromARGB(220, 203, 245, 53),
             ),
       ),
       home: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           toolbarHeight: 2,
         ),

@@ -1,5 +1,5 @@
 name: flutter_calc
-description: "A new Flutter project."
+description: "Calculator app"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   math_expressions: ^3.1.0
+  flutter_launcher_icons: ^0.14.4
 
 dev_dependencies:
   flutter_test:
@@ -46,6 +47,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -88,3 +90,38 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+  
+flutter_launcher_icons: # flutter pub run flutter_launcher_icons
+  image_path: "assets/icon/calc_icon.png"
+
+  android: "launcher_icon"
+  # image_path_android: "assets/icon/icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  # adaptive_icon_background: "assets/icon/background.png"
+  # adaptive_icon_foreground: "assets/icon/foreground.png"
+  # adaptive_icon_foreground_inset: 16
+  # adaptive_icon_monochrome: "assets/icon/monochrome.png"
+
+  ios: true
+  # image_path_ios: "assets/icon/icon.png"
+  remove_alpha_ios: true
+  # image_path_ios_dark_transparent: "assets/icon/icon_dark.png"
+  # image_path_ios_tinted_grayscale: "assets/icon/icon_tinted.png"
+  # desaturate_tinted_to_grayscale_ios: true
+  # background_color_ios: "#ffffff"
+
+  web:
+    generate: true
+    #image_path: "path/to/image.png"
+    #background_color: "##A3A3A2"
+    #theme_color: "##000000"
+
+  windows:
+    generate: true
+    #image_path: "path/to/image.png"
+    icon_size: 48 # min:48, max:256, default: 48
+
+  macos:
+    generate: true
+    #image_path: "path/to/image.png"

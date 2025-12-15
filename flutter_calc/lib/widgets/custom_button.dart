@@ -97,7 +97,7 @@ class _ButtonState extends State<Button> {
                   widget.buttonText,
                   style: TextStyle(
                     color: widget.textColor,
-                    fontSize: 32,
+                    fontSize: 28,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
