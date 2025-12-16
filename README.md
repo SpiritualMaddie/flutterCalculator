@@ -47,6 +47,9 @@ A simple calculator built with Flutter, featuring animated buttons and customiza
 - Robust error handling and input validation
 - Horizontal scrolling for long results
 - Swedish localized error messages
+- Easter egg if palette button is triple tapped (changing theme)
+- Fixed size on desktop
+- Heptic feedback on pressed buttons
 
 ## Usage
 
@@ -60,6 +63,7 @@ A simple calculator built with Flutter, featuring animated buttons and customiza
 - **CE** - Clears both input and result
 - **DEL** - Removes the last character
 - **Palette button** - Change accent color (tap), reset to white (long press)
+- - **Palette button** - Tap for easter egg (changing theme)
 
 
 ## Design
@@ -69,6 +73,11 @@ A simple calculator built with Flutter, featuring animated buttons and customiza
 - **Secondary**: Light gray (#A3A3A2) - For number buttons
 - **Surface**: Medium gray (#555453) - For button grid background
 - **Accent**: Customizable neon/white - For text
+
+#### Easter Egg Color Scheme
+- **Primary**: Medium/mint green (#668E43) - For operator buttons
+- **Secondary**: Orange yellow (#DEA42E) - For number buttons
+- **Surface**: Pink (#E12579) - For button grid background
 
 ### Animations
 - Button scale effect on press (0.93x)
@@ -152,7 +161,7 @@ This project was created for educational purposes as part of the Hybrid Developm
 **Madde** - [GitHub](https://github.com/SpiritualMaddie)
 ReadMes created with help from [ClaudeAI](https://claude.ai/) for a cleaner, more comprahensive and structured layout
 
-Course: Hybrid Development with Flutter - Dart Module  
+Course: Hybrid Development with Flutter - Flutter Module  
 Institution: [Stockholms Tekniska Institut](https://www.sti.se/)  
 Date: November - December 2025
 
@@ -161,6 +170,8 @@ Date: November - December 2025
 ```
 lib/
 ├── main.dart                   # App entry point and theme
+├── helpers/
+│   └── window_size_helper.dart # Helper to set static size for window on desktop
 ├── widgets/
 │   ├── calculator.dart         # Main calculator widget
 │   ├── custom_button.dart      # Custom button component
