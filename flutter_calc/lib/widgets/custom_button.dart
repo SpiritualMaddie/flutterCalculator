@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // A custom animated button widget for the calculator.
 // Features:
@@ -32,12 +33,17 @@ class _ButtonState extends State<Button> {
   // Sets the pressed state to true, triggering the press animation
   void _handleTapDown(TapDownDetails _) {
     setState(() => _pressed = true);
+    HapticFeedback.selectionClick();
   }
 
   // Handles when the touch is released
   // Resets the pressed state and executes the tap callback
   void _handleTapUp(TapUpDetails _) {
-    setState(() => _pressed = false);
+    Future.delayed(const Duration(milliseconds: 50), () {
+      if (mounted) {
+        setState(() => _pressed = false);
+      }
+    });
     widget.buttonTapped?.call();
   }
 
@@ -50,6 +56,8 @@ class _ButtonState extends State<Button> {
   // Handles long press gestures
   // Executes the long press callback if provided
   void _handleLongPressed() {
+    HapticFeedback.mediumImpact();
+    HapticFeedback.vibrate();
     widget.buttonLongPressed?.call();
   }
 
@@ -90,6 +98,8 @@ class _ButtonState extends State<Button> {
               // triggers after holding for ~500ms
               onLongPress: _handleLongPressed,
               borderRadius: BorderRadius.circular(35),
+              splashColor: Colors.white.withValues(alpha: 0.2),
+              highlightColor: Colors.white.withValues(alpha: 0.1),
               child: Container(
                 height: 70,
                 alignment: Alignment.center,
@@ -97,7 +107,7 @@ class _ButtonState extends State<Button> {
                   widget.buttonText,
                   style: TextStyle(
                     color: widget.textColor,
-                    fontSize: 32,
+                    fontSize: 28,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
