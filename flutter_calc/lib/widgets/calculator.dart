@@ -3,7 +3,9 @@ import 'package:flutter_calc/utils/utils.dart';
 import 'package:flutter_calc/widgets/widgets.dart';
 
 class Calculator extends StatefulWidget {
-  const Calculator({super.key});
+  final VoidCallback onThemeToggle;
+
+  const Calculator({super.key, required this.onThemeToggle});
 
   @override
   State<Calculator> createState() => _CalculatorState();
@@ -13,6 +15,34 @@ class _CalculatorState extends State<Calculator> {
   var userInput = "";
   var userAnswer = "";
   Color accentColor = Colors.white;
+
+  // Triple-tap detection
+  int _tapCount = 0;
+  DateTime? _lastTapTime;
+
+  void _handleColorButtonTap() {
+    final now = DateTime.now();
+    
+    // Reset count if more than 500ms since last tap
+    if (_lastTapTime == null || now.difference(_lastTapTime!) > const Duration(milliseconds: 500)) {
+      _tapCount = 1;
+    } else {
+      _tapCount++;
+    }
+    
+    _lastTapTime = now;
+    
+    // Triple tap detected - toggle theme
+    if (_tapCount == 3) {
+      widget.onThemeToggle();
+      _tapCount = 0; // Reset
+    } else {
+      // Normal tap - change accent color
+      setState(() {
+        accentColor = getRandomNeonColor(accentColor);
+      });
+    }
+  }
 
   final List<String> buttons = [
     "C",
@@ -172,11 +202,7 @@ class _CalculatorState extends State<Calculator> {
                         // Color button - changes to neon colors on tap and white on long press
                         else if (index == 16) {
                           return Button(
-                            buttonTapped: () {
-                              setState(() {
-                                accentColor = getRandomNeonColor(accentColor);
-                              });
-                            },
+                            buttonTapped: _handleColorButtonTap,
                             buttonLongPressed: () {
                               setState(() {
                                 accentColor = Colors.white;
