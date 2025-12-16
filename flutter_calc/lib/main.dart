@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_calc/helpers/window_size_helper.dart';
 import 'package:flutter_calc/widgets/widgets.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-// Conditional import - only imports window_manager on non-web platforms
-import './helpers/window_size_helper.dart' if (dart.library.html) 'window_size_helper_web.dart';
+import './helpers/window_size_helper.dart';
 
 
 void main() async {

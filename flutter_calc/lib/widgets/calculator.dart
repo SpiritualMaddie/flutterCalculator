@@ -70,19 +70,7 @@ class _CalculatorState extends State<Calculator> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // transformAlignment: AlignmentGeometry.center,
-      // constraints: BoxConstraints(
-      //   maxWidth: 480,
-      //   minWidth: 380,
-      //   maxHeight: 900,
-      //   minHeight: 800,
-      // ),
       color: Theme.of(context).colorScheme.secondary,
-      // child: Center(
-      //   widthFactor: 0,
-      //   heightFactor: 0,
-      //     child: AspectRatio(
-      //       aspectRatio: 16 / 33.5,
             child: Column(
               children: [
                 // Top part of the calculator
@@ -237,8 +225,6 @@ class _CalculatorState extends State<Calculator> {
                 ),
               ],
             ),
-      //     ),
-      // ),
     );
   }
 }

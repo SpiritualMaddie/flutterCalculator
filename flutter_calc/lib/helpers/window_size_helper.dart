@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 import 'package:window_manager/window_manager.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 Future<void> setupWindow() async {
+  if(kIsWeb) return;
   // Initialize window manager for desktop platforms
   if (Platform.isWindows || Platform.isMacOS || Platform.isLinux) {
     WidgetsFlutterBinding.ensureInitialized();
